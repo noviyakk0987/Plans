@@ -11,6 +11,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { theme } from '../theme';
+import { ScreenContainer } from '../components/ScreenContainer';
 import { FadeIn, Pressable, Tilt } from '../motion';
 
 const NOTES = [
@@ -72,20 +73,21 @@ export const PerfumeLandingScreen = () => {
         <View style={s.grid} />
       </View>
 
-      <Animated.ScrollView
-        onScroll={onScroll}
-        scrollEventThrottle={16}
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={s.scrollContent}
-      >
-        <View style={s.nav}>
-          <Text style={s.logo}>NÉBULE</Text>
-          <View style={s.navLinks}>
-            <Text style={s.navLink}>аромат</Text>
-            <Text style={s.navLink}>ритуал</Text>
-            <Text style={s.navLink}>бутик</Text>
+      <ScreenContainer style={s.screenFrame}>
+        <Animated.ScrollView
+          onScroll={onScroll}
+          scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={s.scrollContent}
+        >
+          <View style={s.nav}>
+            <Text style={s.logo}>NÉBULE</Text>
+            <View style={s.navLinks}>
+              <Text style={s.navLink}>аромат</Text>
+              <Text style={s.navLink}>ритуал</Text>
+              <Text style={s.navLink}>бутик</Text>
+            </View>
           </View>
-        </View>
 
         <View style={[s.hero, isWide && s.heroWide]}>
           <Animated.View style={[s.copy, headlineStyle]}>
@@ -160,7 +162,8 @@ export const PerfumeLandingScreen = () => {
           <Text style={s.finalTitle}>Maison Nébule</Text>
           <Text style={s.finalText}>Вымышленный флакон. Реальный вау-эффект.</Text>
         </View>
-      </Animated.ScrollView>
+        </Animated.ScrollView>
+      </ScreenContainer>
     </View>
   );
 };
@@ -189,6 +192,7 @@ const PerfumeBottle = () => (
 
 const s = StyleSheet.create({
   root: { flex: 1, backgroundColor: '#09070F' },
+  screenFrame: { maxWidth: 1440, backgroundColor: 'transparent' },
   backdrop: { ...StyleSheet.absoluteFillObject, overflow: 'hidden', backgroundColor: '#09070F' },
   halo: {
     position: 'absolute',

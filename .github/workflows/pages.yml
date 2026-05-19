@@ -23,6 +23,8 @@ jobs:
     defaults:
       run:
         working-directory: fest-app
+    env:
+      EXPO_PUBLIC_PERFUME_LANDING: "1"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
